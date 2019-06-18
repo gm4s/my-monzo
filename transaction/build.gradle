@@ -1,0 +1,24 @@
+apply plugin: 'com.android.dynamic-feature'
+
+apply plugin: 'kotlin-platform-android'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+apply from: '../config_module.gradle'
+apply from: '../base_dependencies.gradle'
+apply from: '../test_dependencies.gradle'
+
+android {
+    lintOptions {
+        lintConfig file(project.rootDir.path + "/transaction/lint-rules.xml")
+    }
+}
+
+dependencies {
+    implementation project(':app')
+    implementation project(':core')
+
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
+}
