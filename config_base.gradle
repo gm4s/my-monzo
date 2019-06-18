@@ -1,0 +1,51 @@
+ext {
+
+    application_id = "io.freshdroid.mymonzo"
+
+    version_code = 1
+    version_name = "0.1.0"
+
+    compile_sdk_version = 28
+    target_sdk_version = 28
+    min_sdk_version = 21
+
+    build_tools_version = "28.0.3"
+
+    multidex_version = "2.0.1"
+    support_library_version = "1.0.0"
+    vectordrawable_animated_version = "1.0.0"
+    legacy_support_v13_version = "1.0.0"
+    browser_version = "1.0.0"
+    cardview_version = "1.0.0"
+    legacy_support_v4_version = "1.0.0"
+    gridlayout_version = "1.0.0"
+    recyclerview_version = "1.0.0"
+    appcompat_version = "1.0.2"
+    material_version = "1.0.0"
+    dynamicanimation_version = "1.0.0"
+    palette_version = "1.0.0"
+    lifecycle_version = "2.0.0"
+    arch_core_version = "2.0.1"
+    dagger_version = "2.22.1"
+    timber_version = "4.7.1"
+    retrofit_version = "2.5.0"
+    moshi_version = "1.8.0"
+    okhttp3_version = "3.14.1"
+    ok2curl_version = "0.4.5"
+    rx_java_version = "2.2.8"
+    rx_android_version = "2.1.1"
+    rx_binding_version = "2.2.0"
+    rx_auto_dispose_version = "1.2.0"
+    rx_auto_dispose_ktx_version = "1.2.0"
+    glide_version = "4.9.0"
+    joda_time_version = "2.10"
+    chuck_version = "1.1.0"
+    lottie_version = "3.0.3"
+
+    mockito_version = "2.25.1"
+    robolectric_version = "4.3"
+    test_monitor_version = "1.1.1"
+    test_core_version = "1.1.0"
+    junit_version = "4.12"
+
+}

@@ -1,0 +1,64 @@
+apply from: '../config_base.gradle'
+
+ext {
+    android {
+        compileSdkVersion project.compile_sdk_version
+        buildToolsVersion "$project.build_tools_version"
+
+        androidExtensions {
+            experimental = true
+        }
+
+        lintOptions {
+            quiet true
+            abortOnError true
+            warningsAsErrors true
+        }
+
+        testOptions {
+            unitTests.all {
+                jvmArgs '-noverify'
+
+                testLogging {
+                    afterSuite { desc, result ->
+                        if (!desc.parent) {
+                            println "Results: ${result.resultType} (${result.testCount} test, ${result.successfulTestCount} success, ${result.failedTestCount} failure, ${result.skippedTestCount} skipped)"
+                        }
+                    }
+                }
+            }
+            unitTests {
+                includeAndroidResources = true
+            }
+        }
+
+        defaultConfig {
+            minSdkVersion project.min_sdk_version
+            targetSdkVersion project.target_sdk_version
+
+            vectorDrawables.useSupportLibrary = true
+
+            testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        }
+
+        buildTypes {
+            debug {
+                debuggable true
+            }
+            release {
+                debuggable false
+            }
+        }
+
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+
+        packagingOptions {
+            exclude 'META-INF/rxjava.properties'
+            exclude 'META-INF/LICENSE'
+        }
+    }
+
+}

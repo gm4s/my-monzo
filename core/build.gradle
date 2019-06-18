@@ -1,0 +1,51 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+apply from: '../config_module.gradle'
+apply from: '../base_dependencies.gradle'
+apply from: '../test_dependencies.gradle'
+
+def secretsPropertiesFile = rootProject.file("secrets.properties")
+def secretsProperties = new Properties()
+secretsProperties.load(new FileInputStream(secretsPropertiesFile))
+
+android {
+
+    defaultConfig {
+        versionCode project.version_code
+        versionName = "$project.version_name"
+    }
+
+    lintOptions {
+        lintConfig file(project.rootDir.path + "/core/lint-rules.xml")
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField 'String', 'BASE_URL', secretsProperties['devBaseUrl']
+        }
+        release {
+            buildConfigField 'String', 'BASE_URL', secretsProperties['prodBaseUrl']
+
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+
+    implementation "com.github.mrmike:ok2curl:$ok2curl_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3_version"
+
+    debugImplementation "com.readystatesoftware.chuck:library:$chuck_version"
+    releaseImplementation "com.readystatesoftware.chuck:library-no-op:$chuck_version"
+}

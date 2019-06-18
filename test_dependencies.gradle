@@ -1,0 +1,7 @@
+dependencies {
+    testImplementation "org.mockito:mockito-core:$mockito_version"
+    testImplementation "org.robolectric:robolectric:$robolectric_version"
+    testImplementation "androidx.test:monitor:$test_monitor_version"
+    testImplementation "androidx.test:core:$test_core_version"
+    testImplementation "junit:junit:$junit_version"
+}
