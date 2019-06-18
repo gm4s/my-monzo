@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<io.freshdroid.mymonzo.home.views.BottomNavigationItemView
+			android:id="@+id/feedBottomNavigationItemView"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:background="?android:attr/selectableItemBackgroundBorderless"
+			android:clickable="true"
+			android:focusable="true"
+			android:gravity="center"
+			app:icon="@drawable/ic_feed"
+			android:orientation="vertical"/>
+
+	<io.freshdroid.mymonzo.home.views.BottomNavigationItemView
+			android:id="@+id/summaryBottomNavigationItemView"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:background="?android:attr/selectableItemBackgroundBorderless"
+			android:clickable="true"
+			android:focusable="true"
+			android:gravity="center"
+			app:icon="@drawable/ic_summary"
+			android:orientation="vertical"/>
+
+	<io.freshdroid.mymonzo.home.views.BottomNavigationItemView
+			android:id="@+id/accountBottomNavigationItemView"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:background="?android:attr/selectableItemBackgroundBorderless"
+			android:clickable="true"
+			android:focusable="true"
+			android:gravity="center"
+			app:icon="@drawable/ic_card"
+			android:orientation="vertical"/>
+
+	<io.freshdroid.mymonzo.home.views.BottomNavigationItemView
+			android:id="@+id/helpBottomNavigationItemView"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:background="?android:attr/selectableItemBackgroundBorderless"
+			android:clickable="true"
+			android:focusable="true"
+			android:gravity="center"
+			app:icon="@drawable/ic_help"
+			android:orientation="vertical"/>
+
+</merge>
