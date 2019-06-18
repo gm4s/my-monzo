@@ -1,0 +1,40 @@
+# Emacs
+*~
+
+# Files for the Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+
+# Gradle files
+.gradle/
+build/
+app/build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Log Files
+*.log
+
+# OSX files
+.DS_Store
+
+# Android Studio
+.idea/
+projectFilesBackup/
+captures/
+
+# Generated iml files
+*.iml
+
+# Credentials for uploading builds
+config/*.yml
+
+# Shhttt it's a secret ;)
+secrets.properties
