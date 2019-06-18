@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<!-- ICON SIZE -->
+	<dimen name="icon_size_regular">24dp</dimen>
+	<dimen name="icon_size_regular_x2">48dp</dimen>
+	<dimen name="icon_size_regular_x3">72dp</dimen>
+	<dimen name="icon_size_regular_x4">96dp</dimen>
+	<dimen name="icon_size_regular_x5">120dp</dimen>
+	<dimen name="icon_size_regular_x6">144dp</dimen>
+
+	<!-- CORNER RADIUS -->
+	<dimen name="corner_radius_mini">5dp</dimen>
+	<dimen name="corner_radius_regular">16dp</dimen>
+
+	<!-- MARGIN -->
+	<dimen name="margin_tiny">4dp</dimen>
+	<dimen name="margin_mini">8dp</dimen>
+	<dimen name="margin_small">12dp</dimen>
+	<dimen name="margin_regular">16dp</dimen>
+	<dimen name="margin_regular_plus">22dp</dimen>
+	<dimen name="margin_regular_x2">32dp</dimen>
+	<dimen name="margin_regular_x3">48dp</dimen>
+	<dimen name="margin_regular_x4">64dp</dimen>
+
+	<!-- BUTTON -->
+	<dimen name="button_regular_height">48dp</dimen>
+
+	<!-- PADDING -->
+	<dimen name="padding_regular">16dp</dimen>
+
+	<!-- TOOLBAR -->
+	<dimen name="toolbar_size">56dp</dimen>
+
+	<!-- ELEVATION -->
+	<dimen name="elevation_card_min">2dp</dimen>
+	<dimen name="elevation_card_medium">5dp</dimen>
+	<dimen name="elevation_card_max">8dp</dimen>
+	<dimen name="elevation_dialog">24dp</dimen>
+
+</resources>

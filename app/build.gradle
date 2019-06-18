@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+apply from: '../config_module.gradle'
+apply from: '../base_dependencies.gradle'
+apply from: '../test_dependencies.gradle'
+
+android {
+
+    defaultConfig {
+        versionCode project.version_code
+        versionName = "$project.version_name"
+        multiDexEnabled true
+    }
+
+    lintOptions {
+        lintConfig file(project.rootDir.path + "/app/lint-rules.xml")
+    }
+
+    buildTypes {
+        debug {
+            resValue 'string', 'app_name_generated', '"Devonzo"'
+        }
+        release {
+            resValue 'string', 'app_name_generated', '"MyMonzo"'
+
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dynamicFeatures = [
+            ":account",
+            ":transaction",
+            ":feed",
+            ":home",
+            ":lock"
+    ]
+
+}
+
+dependencies {
+    implementation project(':core')
+
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
+}

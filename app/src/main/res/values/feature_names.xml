@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_name_account" translatable="false" value="account" />
+    <string name="feature_name_feed" translatable="false" value="feed" />
+    <string name="feature_name_home" translatable="false" value="home" />
+    <string name="feature_name_lock" translatable="false" value="lock" />
+    <string name="feature_name_transaction" translatable="false" value="transaction" />
+</resources>

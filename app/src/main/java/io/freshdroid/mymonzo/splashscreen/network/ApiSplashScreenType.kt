@@ -1,0 +1,3 @@
+package io.freshdroid.mymonzo.splashscreen.network
+
+interface ApiSplashScreenType
