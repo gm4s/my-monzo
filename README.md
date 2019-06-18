@@ -98,13 +98,6 @@ Lint
 ```
 
 ## Git :floppy_disk:
-### Branch
-
-* `master` --> Latest code running on production
-* `internal` --> Push deploy a new version on Google Play (Internal channel)
-* `develop` --> Stable development code before QA
-* `test-QA` --> Push provide an APK test for the QA Team
-
 ### Branch naming convention
 
 ```
