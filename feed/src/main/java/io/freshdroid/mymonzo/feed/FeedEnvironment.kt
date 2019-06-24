@@ -1,6 +1,6 @@
 package io.freshdroid.mymonzo.feed
 
-import io.freshdroid.core.user.CurrentUserType
+import io.freshdroid.mymonzo.core.user.CurrentUserType
 import io.reactivex.Scheduler
 
 data class FeedEnvironment(

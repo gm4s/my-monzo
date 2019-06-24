@@ -3,7 +3,7 @@ package io.freshdroid.mymonzo.feed.viewmodels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
-import io.freshdroid.core.viewmodel.FragmentViewModel
+import io.freshdroid.mymonzo.core.viewmodel.FragmentViewModel
 import io.freshdroid.mymonzo.feed.FeedEnvironment
 
 class FeedFragmentViewModel(

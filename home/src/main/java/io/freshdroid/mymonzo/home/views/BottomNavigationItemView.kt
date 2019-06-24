@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
-import io.freshdroid.core.extensions.bind
+import io.freshdroid.mymonzo.core.extensions.bind
 import io.freshdroid.mymonzo.home.R
 
 

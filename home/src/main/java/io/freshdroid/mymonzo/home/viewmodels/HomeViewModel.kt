@@ -4,9 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
 import com.uber.autodispose.autoDisposable
-import io.freshdroid.core.rx.Irrelevant
-import io.freshdroid.core.ui.IntentExtra
-import io.freshdroid.core.viewmodel.ActivityViewModel
+import io.freshdroid.mymonzo.core.rx.Irrelevant
+import io.freshdroid.mymonzo.core.ui.IntentExtra
+import io.freshdroid.mymonzo.core.viewmodel.ActivityViewModel
 import io.freshdroid.mymonzo.home.viewmodels.inputs.HomeViewModelInputs
 import io.freshdroid.mymonzo.home.viewmodels.outputs.HomeViewModelOutputs
 import io.freshdroid.mymonzo.home.views.FragmentState

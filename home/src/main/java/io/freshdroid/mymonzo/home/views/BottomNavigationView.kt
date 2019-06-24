@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import io.freshdroid.core.extensions.bind
+import io.freshdroid.mymonzo.core.extensions.bind
 import io.freshdroid.mymonzo.home.R
 
 class BottomNavigationView @JvmOverloads constructor(

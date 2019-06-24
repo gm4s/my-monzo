@@ -2,7 +2,7 @@ package io.freshdroid.mymonzo.feed.di
 
 import dagger.Module
 import dagger.Provides
-import io.freshdroid.core.user.CurrentUserType
+import io.freshdroid.mymonzo.core.user.CurrentUserType
 import io.freshdroid.mymonzo.feed.FeedEnvironment
 import io.reactivex.Scheduler
 

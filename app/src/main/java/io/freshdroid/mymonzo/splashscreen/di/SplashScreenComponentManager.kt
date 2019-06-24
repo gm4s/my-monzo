@@ -1,6 +1,6 @@
 package io.freshdroid.mymonzo.splashscreen.di
 
-import io.freshdroid.core.di.CoreComponent
+import io.freshdroid.mymonzo.core.di.CoreComponent
 import javax.inject.Singleton
 
 @Singleton

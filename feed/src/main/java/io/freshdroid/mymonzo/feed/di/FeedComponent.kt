@@ -1,7 +1,7 @@
 package io.freshdroid.mymonzo.feed.di
 
 import dagger.Component
-import io.freshdroid.core.di.CoreComponent
+import io.freshdroid.mymonzo.core.di.CoreComponent
 import io.freshdroid.mymonzo.feed.FeedEnvironment
 
 @FeedScope

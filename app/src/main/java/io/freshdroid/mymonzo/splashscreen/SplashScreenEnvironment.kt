@@ -1,6 +1,6 @@
 package io.freshdroid.mymonzo.splashscreen
 
-import io.freshdroid.core.user.CurrentUserType
+import io.freshdroid.mymonzo.core.user.CurrentUserType
 import io.freshdroid.mymonzo.splashscreen.network.ApiSplashScreenType
 import io.reactivex.Scheduler
 import javax.inject.Inject

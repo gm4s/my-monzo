@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
 import com.uber.autodispose.autoDisposable
-import io.freshdroid.core.rx.Irrelevant
-import io.freshdroid.core.viewmodel.ActivityViewModel
+import io.freshdroid.mymonzo.core.rx.Irrelevant
+import io.freshdroid.mymonzo.core.viewmodel.ActivityViewModel
 import io.freshdroid.mymonzo.navigation.ApplicationMap
 import io.freshdroid.mymonzo.splashscreen.SplashScreenEnvironment
 import io.freshdroid.mymonzo.splashscreen.di.SplashScreenComponentManager

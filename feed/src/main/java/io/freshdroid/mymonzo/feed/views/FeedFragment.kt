@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
-import io.freshdroid.core.ui.BaseFragment
+import io.freshdroid.mymonzo.core.ui.BaseFragment
 import io.freshdroid.mymonzo.coreComponent
 import io.freshdroid.mymonzo.feed.R
 import io.freshdroid.mymonzo.feed.di.FeedComponentManager

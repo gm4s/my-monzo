@@ -3,10 +3,10 @@ package io.freshdroid.mymonzo.splashscreen.views
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
 import com.uber.autodispose.autoDisposable
-import io.freshdroid.core.extensions.launchIntent
-import io.freshdroid.core.rx.transformers.Transformers.observeForUI
-import io.freshdroid.core.ui.BaseActivity
-import io.freshdroid.core.ui.TransitionUtils.fadeIn
+import io.freshdroid.mymonzo.core.extensions.launchIntent
+import io.freshdroid.mymonzo.core.rx.transformers.Transformers.observeForUI
+import io.freshdroid.mymonzo.core.ui.BaseActivity
+import io.freshdroid.mymonzo.core.ui.TransitionUtils.fadeIn
 import io.freshdroid.mymonzo.R
 import io.freshdroid.mymonzo.coreComponent
 import io.freshdroid.mymonzo.navigation.UriResolver

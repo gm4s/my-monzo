@@ -3,8 +3,8 @@ package io.freshdroid.mymonzo.splashscreen.di
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
-import io.freshdroid.core.network.HttpTransitionFactoryType
-import io.freshdroid.core.user.CurrentUserType
+import io.freshdroid.mymonzo.core.network.HttpTransitionFactoryType
+import io.freshdroid.mymonzo.core.user.CurrentUserType
 import io.freshdroid.mymonzo.splashscreen.SplashScreenEnvironment
 import io.freshdroid.mymonzo.splashscreen.network.ApiSplashScreen
 import io.freshdroid.mymonzo.splashscreen.network.ApiSplashScreenType

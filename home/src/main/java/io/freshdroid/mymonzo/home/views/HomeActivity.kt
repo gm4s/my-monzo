@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.uber.autodispose.autoDisposable
-import io.freshdroid.core.rx.transformers.Transformers.observeForUI
-import io.freshdroid.core.ui.BaseActivity
+import io.freshdroid.mymonzo.core.rx.transformers.Transformers.observeForUI
+import io.freshdroid.mymonzo.core.ui.BaseActivity
 import io.freshdroid.mymonzo.home.R
 import io.freshdroid.mymonzo.home.viewmodels.HomeViewModel
 import io.freshdroid.mymonzo.navigation.Fragments
