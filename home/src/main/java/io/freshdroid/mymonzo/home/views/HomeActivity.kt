@@ -60,7 +60,9 @@ class HomeActivity : BaseActivity() {
 
 }
 
-enum class FragmentState(tag: String) {
+enum class FragmentState(
+    val tag: String
+) {
     FEED("tab_feed"),
     SUMMARY("tab_summary"),
     ACCOUNT("tab_account"),

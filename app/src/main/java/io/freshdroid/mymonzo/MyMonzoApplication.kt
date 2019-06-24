@@ -7,14 +7,14 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.multidex.MultiDexApplication
-import io.freshdroid.core.di.CoreComponent
-import io.freshdroid.core.di.CoreModule
-import io.freshdroid.core.di.DaggerCoreComponent
-import io.freshdroid.core.ui.BaseActivity
-import io.freshdroid.core.ui.BaseFragment
+import io.freshdroid.mymonzo.core.di.CoreComponent
+import io.freshdroid.mymonzo.core.di.CoreModule
+import io.freshdroid.mymonzo.core.di.DaggerCoreComponent
+import io.freshdroid.mymonzo.core.ui.BaseActivity
+import io.freshdroid.mymonzo.core.ui.BaseFragment
 import timber.log.Timber
 
-class MyMonzoApplication : MultiDexApplication(), LifecycleObserver {
+open class MyMonzoApplication : MultiDexApplication(), LifecycleObserver {
 
     private val coreComponent: CoreComponent by lazy {
         DaggerCoreComponent.builder()
@@ -30,6 +30,10 @@ class MyMonzoApplication : MultiDexApplication(), LifecycleObserver {
     }
 
     fun coreComponent(): CoreComponent = coreComponent
+
+    protected open fun isInUnitTests(): Boolean {
+        return false
+    }
 
     override fun onCreate() {
         super.onCreate()
