@@ -19,7 +19,7 @@ open class BaseActivity : AppCompatActivity(), LifecycleOwner, LifecycleObserver
 
     protected val scopeProvider: AndroidLifecycleScopeProvider by lazy { AndroidLifecycleScopeProvider.from(this) }
 
-    private val mBack = PublishSubject.create<Irrelevant>()
+    private val _back = PublishSubject.create<Irrelevant>()
 
     @CallSuper
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
@@ -44,7 +44,7 @@ open class BaseActivity : AppCompatActivity(), LifecycleOwner, LifecycleObserver
         super.onStart()
         Timber.v(this.toString(), "onStart")
 
-        mBack
+        _back
             .observeOn(AndroidSchedulers.mainThread())
             .autoDisposable(AndroidLifecycleScopeProvider.from(this, Lifecycle.Event.ON_STOP))
             .subscribe { goBack() }
@@ -104,7 +104,7 @@ open class BaseActivity : AppCompatActivity(), LifecycleOwner, LifecycleObserver
     }
 
     protected fun back() {
-        mBack.onNext(Irrelevant.INSTANCE)
+        _back.onNext(Irrelevant.INSTANCE)
     }
 
     private fun goBack() {

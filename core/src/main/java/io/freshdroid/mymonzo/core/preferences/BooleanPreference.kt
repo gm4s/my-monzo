@@ -4,25 +4,25 @@ import android.content.SharedPreferences
 import javax.inject.Inject
 
 class BooleanPreference @Inject constructor(
-        private val sharedPreferences: SharedPreferences,
-        private val key: String,
-        private val defaultValue: Boolean = false
+    private val _sharedPreferences: SharedPreferences,
+    private val _key: String,
+    private val _defaultValue: Boolean = false
 ): BooleanPreferenceType {
 
     override fun get(): Boolean {
-        return sharedPreferences.getBoolean(key, defaultValue)
+        return _sharedPreferences.getBoolean(_key, _defaultValue)
     }
 
     override fun isSet(): Boolean {
-        return sharedPreferences.contains(key)
+        return _sharedPreferences.contains(_key)
     }
 
     override fun set(value: Boolean) {
-        sharedPreferences.edit().putBoolean(key, value).apply()
+        _sharedPreferences.edit().putBoolean(_key, value).apply()
     }
 
     override fun delete() {
-        sharedPreferences.edit().remove(key).apply()
+        _sharedPreferences.edit().remove(_key).apply()
     }
 
 }

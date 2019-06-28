@@ -4,25 +4,25 @@ import android.content.SharedPreferences
 import javax.inject.Inject
 
 class LongPreference @Inject constructor(
-        private val sharedPreferences: SharedPreferences,
-        private val key: String,
-        private val defaultValue: Long = 0
+    private val _sharedPreferences: SharedPreferences,
+    private val _key: String,
+    private val _defaultValue: Long = 0
 ) : LongPreferenceType {
 
     override fun get(): Long {
-        return sharedPreferences.getLong(key, defaultValue)
+        return _sharedPreferences.getLong(_key, _defaultValue)
     }
 
     override fun isSet(): Boolean {
-        return sharedPreferences.contains(key)
+        return _sharedPreferences.contains(_key)
     }
 
     override fun set(value: Long) {
-        sharedPreferences.edit().putLong(key, value).apply()
+        _sharedPreferences.edit().putLong(_key, value).apply()
     }
 
     override fun delete() {
-        sharedPreferences.edit().remove(key).apply()
+        _sharedPreferences.edit().remove(_key).apply()
     }
 
 }

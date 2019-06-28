@@ -16,7 +16,7 @@ import timber.log.Timber
 
 open class MyMonzoApplication : MultiDexApplication(), LifecycleObserver {
 
-    private val coreComponent: CoreComponent by lazy {
+    private val _coreComponent: CoreComponent by lazy {
         DaggerCoreComponent.builder()
             .coreModule(CoreModule(this))
             .build()
@@ -26,10 +26,10 @@ open class MyMonzoApplication : MultiDexApplication(), LifecycleObserver {
 
     companion object {
         @JvmStatic
-        fun coreComponent(context: Context) = (context.applicationContext as MyMonzoApplication).coreComponent
+        fun coreComponent(context: Context) = (context.applicationContext as MyMonzoApplication)._coreComponent
     }
 
-    fun coreComponent(): CoreComponent = coreComponent
+    fun coreComponent(): CoreComponent = _coreComponent
 
     protected open fun isInUnitTests(): Boolean {
         return false

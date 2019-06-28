@@ -27,7 +27,7 @@ import io.reactivex.ObservableTransformer
 import io.reactivex.functions.Consumer
 
 class NeverApiErrorTransformer<T>(
-    private val errorAction: Consumer<ErrorEnvelope>?
+    private val _errorAction: Consumer<ErrorEnvelope>?
 ) : ObservableTransformer<T, T> {
 
     constructor() : this(null)
@@ -36,8 +36,8 @@ class NeverApiErrorTransformer<T>(
         return upstream
             .doOnError { e: Throwable ->
                 val env = ErrorEnvelope.fromThrowable(e)
-                if (env != null && errorAction != null) {
-                    errorAction.accept(env)
+                if (env != null && _errorAction != null) {
+                    _errorAction.accept(env)
                 }
             }
             .onErrorResumeNext { e: Throwable ->

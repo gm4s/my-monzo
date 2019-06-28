@@ -13,7 +13,7 @@ import io.freshdroid.mymonzo.core.ui.TransitionUtils.slideInRight
 import io.freshdroid.mymonzo.core.ui.TransitionUtils.transition
 
 fun BaseActivity.showToastApiError(errorEnvelope: ErrorEnvelope, length: Int = Toast.LENGTH_LONG) {
-    errorEnvelope.error?.let { Toast.makeText(this, it, length).show() }
+    errorEnvelope.message?.let { Toast.makeText(this, it, length).show() }
 }
 
 fun BaseActivity.showToastError(@StringRes messageResource: Int, length: Int = Toast.LENGTH_LONG) {

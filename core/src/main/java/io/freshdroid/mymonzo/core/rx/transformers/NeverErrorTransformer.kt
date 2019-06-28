@@ -26,14 +26,14 @@ import io.reactivex.ObservableTransformer
 import io.reactivex.functions.Consumer
 
 class NeverErrorTransformer<T>(
-        private val errorAction: Consumer<Throwable>?
+        private val _errorAction: Consumer<Throwable>?
 ) : ObservableTransformer<T, T> {
 
     constructor() : this(null)
 
     override fun apply(upstream: Observable<T>): ObservableSource<T> {
         return upstream
-                .doOnError { e: Throwable -> errorAction?.accept(e) }
+                .doOnError { e: Throwable -> _errorAction?.accept(e) }
                 .onErrorResumeNext(Observable.empty())
     }
 

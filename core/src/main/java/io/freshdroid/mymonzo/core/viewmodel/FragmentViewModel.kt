@@ -8,21 +8,21 @@ import io.reactivex.subjects.PublishSubject
 
 open class FragmentViewModel : ViewModel() {
 
-    private val activityResult = PublishSubject.create<ActivityResult>()
-    private val arguments = PublishSubject.create<Bundle>()
+    private val _activityResult = PublishSubject.create<ActivityResult>()
+    private val _arguments = PublishSubject.create<Bundle>()
 
     fun activityResult(activityResult: ActivityResult) {
-        this.activityResult.onNext(activityResult)
+        this._activityResult.onNext(activityResult)
     }
 
     fun arguments(arguments: Bundle?) {
         arguments?.let {
-            this.arguments.onNext(arguments)
+            this._arguments.onNext(arguments)
         }
     }
 
-    protected fun activityResult(): Observable<ActivityResult> = activityResult
+    protected fun activityResult(): Observable<ActivityResult> = _activityResult
 
-    protected fun arguments(): Observable<Bundle> = arguments
+    protected fun arguments(): Observable<Bundle> = _arguments
 
 }

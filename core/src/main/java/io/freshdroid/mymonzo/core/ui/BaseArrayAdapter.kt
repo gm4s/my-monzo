@@ -2,50 +2,50 @@ package io.freshdroid.mymonzo.core.ui
 
 abstract class BaseArrayAdapter<T : Any> : BaseAdapter<T>() {
 
-    private var items = ArrayList<T>()
+    private var _items = ArrayList<T>()
 
-    fun items(): ArrayList<T> = this.items
+    fun items(): ArrayList<T> = this._items
 
     fun clearItems() {
-        this.items.clear()
+        this._items.clear()
     }
 
     fun addItem(item: T) {
-        this.items.add(item)
+        this._items.add(item)
     }
 
     fun addItems(items: ArrayList<T>) {
-        this.items.addAll(items)
+        this._items.addAll(items)
     }
 
     fun setItems(items: ArrayList<T>) {
-        this.items = items
+        this._items = items
     }
 
     fun insertItem(position: Int, item: T) {
-        this.items.add(position, item)
+        this._items.add(position, item)
     }
 
     fun deleteItem(item: T) {
-        this.items.remove(item)
+        this._items.remove(item)
     }
 
     fun deleteAtPositionItem(position: Int): T {
-        return this.items.removeAt(position)
+        return this._items.removeAt(position)
     }
 
     fun setItem(location: Int, item: T) {
-        this.items[location] = item
+        this._items[location] = item
     }
 
     fun contains(item: T): Boolean {
-        return this.items.contains(item)
+        return this._items.contains(item)
     }
 
-    override fun getItemCount(): Int = items.size
+    override fun getItemCount(): Int = _items.size
 
-    override fun objectFromPosition(position: Int): T = items[position]
+    override fun objectFromPosition(position: Int): T = _items[position]
 
-    override fun positionFromObject(item: T): Int = items.indexOf(item)
+    override fun positionFromObject(item: T): Int = _items.indexOf(item)
 
 }

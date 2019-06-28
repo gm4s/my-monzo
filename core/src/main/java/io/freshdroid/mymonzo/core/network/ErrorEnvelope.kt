@@ -6,8 +6,8 @@ import io.freshdroid.mymonzo.core.network.exceptions.ApiException
 
 @JsonClass(generateAdapter = true)
 data class ErrorEnvelope(
-    @Json(name = "error") val error: String? = null,
-    @Json(name = "code") val code: Int = -1
+    @Json(name = "message") val message: String? = null,
+    val responseCode: Int = -1
 ) {
     companion object {
         fun fromThrowable(t: Throwable): ErrorEnvelope? {

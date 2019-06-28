@@ -8,21 +8,21 @@ import io.reactivex.subjects.PublishSubject
 
 open class ActivityViewModel : ViewModel() {
 
-    private val activityResult = PublishSubject.create<ActivityResult>()
-    private val intent = PublishSubject.create<Intent>()
+    private val _activityResult = PublishSubject.create<ActivityResult>()
+    private val _intent = PublishSubject.create<Intent>()
 
     fun activityResult(activityResult: ActivityResult) {
-        this.activityResult.onNext(activityResult)
+        this._activityResult.onNext(activityResult)
     }
 
     fun intent(intent: Intent?) {
         intent?.let {
-            this.intent.onNext(intent)
+            this._intent.onNext(intent)
         }
     }
 
-    protected fun activityResult(): Observable<ActivityResult> = activityResult
+    protected fun activityResult(): Observable<ActivityResult> = _activityResult
 
-    protected fun intent(): Observable<Intent> = intent
+    protected fun intent(): Observable<Intent> = _intent
 
 }

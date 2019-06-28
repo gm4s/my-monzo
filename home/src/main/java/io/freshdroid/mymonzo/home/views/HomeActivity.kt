@@ -14,47 +14,47 @@ import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : BaseActivity() {
 
-    private val viewModelFactory by lazy {
+    private val _viewModelFactory by lazy {
         HomeViewModel.Factory(scopeProvider)
     }
-    private val viewModel by lazy {
-        ViewModelProviders.of(this, viewModelFactory).get(HomeViewModel::class.java)
+    private val _viewModel by lazy {
+        ViewModelProviders.of(this, _viewModelFactory).get(HomeViewModel::class.java)
     }
 
-    private lateinit var mFeedFragment: Fragment
+    private lateinit var _feedFragment: Fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        viewModel.outputs.initBottomNavigationBar()
+        _viewModel.outputs.initBottomNavigationBar()
             .compose(observeForUI())
             .autoDisposable(scopeProvider)
             .subscribe(homeBottomNavigationView::setStateActiveTab)
 
-        viewModel.outputs.displaySelectedFragment()
+        _viewModel.outputs.displaySelectedFragment()
             .compose(observeForUI())
             .autoDisposable(scopeProvider)
             .subscribe(this::displaySelectedFragment)
 
         initFragments()
 
-        viewModel.intent(intent)
-        homeBottomNavigationView.setListener(viewModel.inputs)
+        _viewModel.intent(intent)
+        homeBottomNavigationView.setListener(_viewModel.inputs)
     }
 
     private fun initFragments() {
-        mFeedFragment = fragmentTo(this, Fragments.Home.Feed)
-        supportFragmentManager.beginTransaction().add(R.id.fragmentContainerFrameLayout, mFeedFragment).commit()
+        _feedFragment = fragmentTo(this, Fragments.Home.Feed)
+        supportFragmentManager.beginTransaction().add(R.id.fragmentContainerFrameLayout, _feedFragment).commit()
     }
 
     private fun displaySelectedFragment(state: FragmentState) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         when (state) {
             FragmentState.FEED -> {
-                fragmentTransaction.show(mFeedFragment).commit()
+                fragmentTransaction.show(_feedFragment).commit()
             }
-            else -> fragmentTransaction.hide(mFeedFragment).commit()
+            else -> fragmentTransaction.hide(_feedFragment).commit()
         }
     }
 

@@ -10,7 +10,7 @@ import io.reactivex.disposables.Disposable
 import retrofit2.Response
 
 class ApiErrorOperator(
-    private val moshi: Moshi
+    private val _moshi: Moshi
 ) : ObservableOperator<String, Response<String>> {
 
     override fun apply(observer: Observer<in String>): Observer<in Response<String>> {
@@ -27,11 +27,11 @@ class ApiErrorOperator(
             override fun onNext(response: Response<String>) {
                 if (!response.isSuccessful) {
                     try {
-                        val adapter = moshi.adapter(ErrorEnvelope::class.java)
+                        val adapter = _moshi.adapter(ErrorEnvelope::class.java)
                         val envelope = adapter.fromJson(response.errorBody()?.string() ?: "{}")
 
                         if (envelope != null) {
-                            val envelopeWithCodeError = envelope.copy(code = response.code())
+                            val envelopeWithCodeError = envelope.copy(responseCode = response.code())
                             observer.onError(ApiException(envelopeWithCodeError, response))
                         } else {
                             observer.onError(ResponseException(response))

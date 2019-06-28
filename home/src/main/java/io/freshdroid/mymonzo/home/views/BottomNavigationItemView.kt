@@ -18,7 +18,7 @@ class BottomNavigationItemView @JvmOverloads constructor(
     defStyleRes: Int = 0
 ) : LinearLayout(context, attrs, defStyle, defStyleRes) {
 
-    private val iconImageView: ImageView by bind(R.id.iconImageView)
+    private val _iconImageView: ImageView by bind(R.id.iconImageView)
 
     init {
         LayoutInflater.from(context).inflate(R.layout.bottom_navigation_item_view, this, true)
@@ -28,30 +28,30 @@ class BottomNavigationItemView @JvmOverloads constructor(
             val a = context.obtainStyledAttributes(attrs, R.styleable.BottomNavigationItemView, 0, 0)
             val drawable = a.getDrawable(R.styleable.BottomNavigationItemView_icon)
             if (drawable != null) {
-                iconImageView.setImageDrawable(drawable)
+                _iconImageView.setImageDrawable(drawable)
             }
         }
     }
 
     fun setActive(active: Boolean) {
         if (active) {
-            iconImageView.setColorFilter(
+            _iconImageView.setColorFilter(
                 ContextCompat.getColor(
                     context,
                     io.freshdroid.mymonzo.R.color.colorAccent
                 ),
                 android.graphics.PorterDuff.Mode.SRC_IN
             )
-            iconImageView.alpha = 1F
+            _iconImageView.alpha = 1F
         } else {
-            iconImageView.setColorFilter(
+            _iconImageView.setColorFilter(
                 ContextCompat.getColor(
                     context,
                     io.freshdroid.mymonzo.R.color.colorPrimaryLight
                 ),
                 android.graphics.PorterDuff.Mode.SRC_IN
             )
-            iconImageView.alpha = 0.65F
+            _iconImageView.alpha = 0.65F
         }
     }
 

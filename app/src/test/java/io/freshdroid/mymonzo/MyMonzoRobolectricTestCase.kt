@@ -14,15 +14,15 @@ import org.robolectric.annotation.Config
 @Config(application = MyMonzoApplicationTest::class)
 internal abstract class MyMonzoRobolectricTestCase : TestCase() {
 
-    private var mApplication: MyMonzoApplicationTest? = null
+    private var _application: MyMonzoApplicationTest? = null
 
     protected fun application(): MyMonzoApplicationTest {
-        if (mApplication != null) {
-            return mApplication as MyMonzoApplicationTest
+        if (_application != null) {
+            return _application as MyMonzoApplicationTest
         }
 
-        mApplication = ApplicationProvider.getApplicationContext() as MyMonzoApplicationTest
-        return mApplication as MyMonzoApplicationTest
+        _application = ApplicationProvider.getApplicationContext() as MyMonzoApplicationTest
+        return _application as MyMonzoApplicationTest
     }
 
     protected fun context(): Context {

@@ -4,10 +4,10 @@ import io.freshdroid.mymonzo.core.network.ErrorEnvelope
 import retrofit2.Response
 
 open class ApiException(
-    private val errorEnvelope: ErrorEnvelope,
+    private val _errorEnvelope: ErrorEnvelope,
     response: Response<*>
 ) : ResponseException(response) {
 
-    fun errorEnvelope(): ErrorEnvelope = errorEnvelope
+    fun errorEnvelope(): ErrorEnvelope = _errorEnvelope
 
 }

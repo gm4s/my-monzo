@@ -4,25 +4,25 @@ import android.content.SharedPreferences
 import javax.inject.Inject
 
 class IntPreference @Inject constructor(
-        private val sharedPreferences: SharedPreferences,
-        private val key: String,
-        private val defaultValue: Int = 0
+    private val _sharedPreferences: SharedPreferences,
+    private val _key: String,
+    private val _defaultValue: Int = 0
 ) : IntPreferenceType {
 
     override fun get(): Int {
-        return sharedPreferences.getInt(key, defaultValue)
+        return _sharedPreferences.getInt(_key, _defaultValue)
     }
 
     override fun isSet(): Boolean {
-        return sharedPreferences.contains(key)
+        return _sharedPreferences.contains(_key)
     }
 
     override fun set(value: Int) {
-        sharedPreferences.edit().putInt(key, value).apply()
+        _sharedPreferences.edit().putInt(_key, value).apply()
     }
 
     override fun delete() {
-        sharedPreferences.edit().remove(key).apply()
+        _sharedPreferences.edit().remove(_key).apply()
     }
 
 }

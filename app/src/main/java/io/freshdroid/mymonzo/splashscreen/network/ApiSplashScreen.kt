@@ -6,6 +6,6 @@ import io.freshdroid.mymonzo.core.network.HttpTransitionFactoryType
 import javax.inject.Inject
 
 class ApiSplashScreen @Inject constructor(
-    private val httpTransitionFactory: HttpTransitionFactoryType,
-    private val moshi: Moshi
-) : ApiCore(moshi), ApiSplashScreenType
+    private val _httpTransitionFactory: HttpTransitionFactoryType,
+    private val _moshi: Moshi
+) : ApiCore(_moshi), ApiSplashScreenType

@@ -5,12 +5,12 @@ import io.reactivex.subjects.PublishSubject
 
 class RxBus : RxBusType {
 
-    private val mPublisher = PublishSubject.create<Any>()
+    private val _publisher = PublishSubject.create<Any>()
 
     override fun publish(event: Any) {
-        mPublisher.onNext(event)
+        _publisher.onNext(event)
     }
 
-    override fun <T> toObservable(eventType: Class<T>): Observable<T> = mPublisher.ofType(eventType)
+    override fun <T> toObservable(eventType: Class<T>): Observable<T> = _publisher.ofType(eventType)
 
 }

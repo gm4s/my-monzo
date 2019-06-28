@@ -12,51 +12,51 @@ import javax.inject.Inject
 
 @SuppressLint("CheckResult")
 internal class CurrentUser @Inject constructor(
-    private val moshi: Moshi,
-    @UserPreference private val userMePreference: StringPreferenceType,
-    @AccessTokenPreference private val accessTokenPreference: StringPreferenceType
+    private val _moshi: Moshi,
+    @UserPreference private val _userMePreference: StringPreferenceType,
+    @AccessTokenPreference private val _accessTokenPreference: StringPreferenceType
 ) : CurrentUserType() {
 
-    private val mUserMe = BehaviorSubject.create<User>()
+    private val _userMe = BehaviorSubject.create<User>()
 
     init {
         val type = Types.newParameterizedType(User::class.java)
 
-        mUserMe
+        _userMe
             .subscribe { freshUser ->
-                val json = moshi.adapter<User>(type).toJson(freshUser)
-                userMePreference.set(json)
+                val json = _moshi.adapter<User>(type).toJson(freshUser)
+                _userMePreference.set(json)
             }
 
-        userMePreference.get()?.let { userPref ->
-            moshi.adapter<User>(type).fromJson(userPref)?.let { mUserMe.onNext(it) }
+        _userMePreference.get()?.let { userPref ->
+            _moshi.adapter<User>(type).fromJson(userPref)?.let { _userMe.onNext(it) }
         }
     }
 
     override fun refresh(freshUser: User) {
-        mUserMe.onNext(freshUser)
+        _userMe.onNext(freshUser)
     }
 
     override fun toObservable(): Observable<User> {
-        return mUserMe
+        return _userMe
     }
 
     override fun setAccessToken(accessToken: String) {
-        accessTokenPreference.set(accessToken)
+        _accessTokenPreference.set(accessToken)
     }
 
     override fun getAccessToken(): String? {
-        return accessTokenPreference.get()
+        return _accessTokenPreference.get()
     }
 
     override fun isLoggedIn(): Boolean {
-        return accessTokenPreference.get() != null
+        return _accessTokenPreference.get() != null
     }
 
     override fun logout() {
-        accessTokenPreference.delete()
-        userMePreference.delete()
-        mUserMe.onNext(User())
+        _accessTokenPreference.delete()
+        _userMePreference.delete()
+        _userMe.onNext(User())
     }
 
 }

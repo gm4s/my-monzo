@@ -29,11 +29,11 @@ import io.reactivex.functions.Action
 const val DIRECTION_DOWN = 1
 
 class RecyclerViewPaginator(
-        private val recyclerView: RecyclerView,
-        private val fetchNext: Action
+    private val _recyclerView: RecyclerView,
+    private val _fetchNext: Action
 ) {
 
-    private var subscription: Disposable? = null
+    private var _subscription: Disposable? = null
 
     init {
         start()
@@ -42,21 +42,21 @@ class RecyclerViewPaginator(
     private fun start() {
         stop()
 
-        subscription = RxRecyclerView.scrollEvents(recyclerView)
-                .filter { recyclerView.canScrollVertically(DIRECTION_DOWN) }
-                .map { recyclerView.layoutManager }
+        _subscription = RxRecyclerView.scrollEvents(_recyclerView)
+                .filter { _recyclerView.canScrollVertically(DIRECTION_DOWN) }
+                .map { _recyclerView.layoutManager }
                 .ofType(LinearLayoutManager::class.java)
                 .map(this::displayedItemFromLinearLayout)
                 .filter { item -> item.second != 0 }
                 .filter(this::visibleItemIsCloseToBottom)
                 .distinctUntilChanged()
-                .subscribe { fetchNext.run() }
+                .subscribe { _fetchNext.run() }
     }
 
     fun stop() {
-        if (subscription != null) {
-            subscription?.dispose()
-            subscription = null
+        if (_subscription != null) {
+            _subscription?.dispose()
+            _subscription = null
         }
     }
 

@@ -18,12 +18,12 @@ class HomeViewModel(
     scopeProvider: AndroidLifecycleScopeProvider
 ) : ActivityViewModel(), HomeViewModelInputs, HomeViewModelOutputs {
 
-    private val mFeedClicked = PublishSubject.create<Irrelevant>()
-    private val mSummaryClicked = PublishSubject.create<Irrelevant>()
-    private val mAccountClicked = PublishSubject.create<Irrelevant>()
-    private val mHelpClicked = PublishSubject.create<Irrelevant>()
-    private val mInitBottomNavigationBar = PublishSubject.create<FragmentState>()
-    private val mDisplaySelectedFragment = PublishSubject.create<FragmentState>()
+    private val _feedClicked = PublishSubject.create<Irrelevant>()
+    private val _summaryClicked = PublishSubject.create<Irrelevant>()
+    private val _accountClicked = PublishSubject.create<Irrelevant>()
+    private val _helpClicked = PublishSubject.create<Irrelevant>()
+    private val _initBottomNavigationBar = PublishSubject.create<FragmentState>()
+    private val _displaySelectedFragment = PublishSubject.create<FragmentState>()
 
     val inputs: HomeViewModelInputs = this
     val outputs: HomeViewModelOutputs = this
@@ -31,57 +31,57 @@ class HomeViewModel(
     init {
         IntentExtra.getStringFromKey(intent(), Activities.Home.KEY_EXTRA_HOME_ACTIVE_TAB, true)
             .map { FragmentState.stateFromTag(it) }
-            .doOnNext(mInitBottomNavigationBar::onNext)
+            .doOnNext(_initBottomNavigationBar::onNext)
             .autoDisposable(scopeProvider)
-            .subscribe(mDisplaySelectedFragment::onNext)
+            .subscribe(_displaySelectedFragment::onNext)
 
-        mFeedClicked
+        _feedClicked
             .autoDisposable(scopeProvider)
-            .subscribe { mDisplaySelectedFragment.onNext(FragmentState.FEED) }
+            .subscribe { _displaySelectedFragment.onNext(FragmentState.FEED) }
 
-        mSummaryClicked
+        _summaryClicked
             .autoDisposable(scopeProvider)
-            .subscribe { mDisplaySelectedFragment.onNext(FragmentState.SUMMARY) }
+            .subscribe { _displaySelectedFragment.onNext(FragmentState.SUMMARY) }
 
-        mAccountClicked
+        _accountClicked
             .autoDisposable(scopeProvider)
-            .subscribe { mDisplaySelectedFragment.onNext(FragmentState.ACCOUNT) }
+            .subscribe { _displaySelectedFragment.onNext(FragmentState.ACCOUNT) }
 
-        mHelpClicked
+        _helpClicked
             .autoDisposable(scopeProvider)
-            .subscribe { mDisplaySelectedFragment.onNext(FragmentState.HELP) }
+            .subscribe { _displaySelectedFragment.onNext(FragmentState.HELP) }
     }
 
     // INPUTS
 
     override fun onFeedClick() {
-        mFeedClicked.onNext(Irrelevant.INSTANCE)
+        _feedClicked.onNext(Irrelevant.INSTANCE)
     }
 
     override fun onSummaryClick() {
-        mSummaryClicked.onNext(Irrelevant.INSTANCE)
+        _summaryClicked.onNext(Irrelevant.INSTANCE)
     }
 
     override fun onAccountClick() {
-        mAccountClicked.onNext(Irrelevant.INSTANCE)
+        _accountClicked.onNext(Irrelevant.INSTANCE)
     }
 
     override fun onHelpClick() {
-        mHelpClicked.onNext(Irrelevant.INSTANCE)
+        _helpClicked.onNext(Irrelevant.INSTANCE)
     }
 
     // OUTPUTS
 
-    override fun initBottomNavigationBar(): Observable<FragmentState> = mInitBottomNavigationBar
+    override fun initBottomNavigationBar(): Observable<FragmentState> = _initBottomNavigationBar
 
-    override fun displaySelectedFragment(): Observable<FragmentState> = mDisplaySelectedFragment
+    override fun displaySelectedFragment(): Observable<FragmentState> = _displaySelectedFragment
 
     @Suppress("UNCHECKED_CAST")
     class Factory(
-        private val scopeProvider: AndroidLifecycleScopeProvider
+        private val _scopeProvider: AndroidLifecycleScopeProvider
     ) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return HomeViewModel(scopeProvider) as T
+            return HomeViewModel(_scopeProvider) as T
         }
     }
 

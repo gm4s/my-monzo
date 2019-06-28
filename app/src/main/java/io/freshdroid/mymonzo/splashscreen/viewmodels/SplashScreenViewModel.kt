@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
 import com.uber.autodispose.autoDisposable
+import io.freshdroid.mymonzo.core.BuildConfig
 import io.freshdroid.mymonzo.core.rx.Irrelevant
 import io.freshdroid.mymonzo.core.viewmodel.ActivityViewModel
 import io.freshdroid.mymonzo.navigation.ApplicationMap
@@ -22,20 +23,22 @@ class SplashScreenViewModel(
     scopeProvider: AndroidLifecycleScopeProvider
 ) : ActivityViewModel(), SplashScreenViewModelInputs, SplashScreenViewModelOutputs, SplashScreenViewModelErrors {
 
-    private val mFakeLoading = PublishSubject.create<Irrelevant>()
-    private val mLaunchNextActivity = PublishSubject.create<Uri>()
+    private val _fakeLoading = PublishSubject.create<Irrelevant>()
+    private val _launchNextActivity = PublishSubject.create<Uri>()
 
-    private val mScheduler = environment.scheduler
+    private val _currentUser = environment.currentUser
+    private val _scheduler = environment.scheduler
 
     val inputs: SplashScreenViewModelInputs = this
     val outputs: SplashScreenViewModelOutputs = this
     val errors: SplashScreenViewModelErrors = this
 
     init {
-        mFakeLoading
-            .delay(1000, TimeUnit.MILLISECONDS, mScheduler)
+        _fakeLoading
+            .doOnNext { _currentUser.setAccessToken(BuildConfig.USER_TOKEN) }
+            .delay(1000, TimeUnit.MILLISECONDS, _scheduler)
             .autoDisposable(scopeProvider)
-            .subscribe { mLaunchNextActivity.onNext(Uri.parse(ApplicationMap.Home.FEED)) }
+            .subscribe { _launchNextActivity.onNext(Uri.parse(ApplicationMap.Home.FEED)) }
     }
 
     override fun onCleared() {
@@ -46,20 +49,20 @@ class SplashScreenViewModel(
     // INPUTS
 
     override fun fakeLoading() {
-        mFakeLoading.onNext(Irrelevant.INSTANCE)
+        _fakeLoading.onNext(Irrelevant.INSTANCE)
     }
 
     // OUTPUTS
 
-    override fun launchNextActivity(): Observable<Uri> = mLaunchNextActivity
+    override fun launchNextActivity(): Observable<Uri> = _launchNextActivity
 
     @Suppress("UNCHECKED_CAST")
     class Factory(
-        private val environment: SplashScreenEnvironment,
-        private val scopeProvider: AndroidLifecycleScopeProvider
+        private val _environment: SplashScreenEnvironment,
+        private val _scopeProvider: AndroidLifecycleScopeProvider
     ) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return SplashScreenViewModel(environment, scopeProvider) as T
+            return SplashScreenViewModel(_environment, _scopeProvider) as T
         }
     }
 

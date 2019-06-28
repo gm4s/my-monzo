@@ -5,8 +5,8 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
 abstract class BaseViewHolder(
-        private val view: View
-) : RecyclerView.ViewHolder(view) {
+    private val _view: View
+) : RecyclerView.ViewHolder(_view) {
 
     /**
      * Populate a view with data that was bound in `bindData`.
@@ -28,8 +28,8 @@ abstract class BaseViewHolder(
     @Throws(Exception::class)
     abstract fun bindData(data: Any)
 
-    protected fun view(): View = view
+    protected fun view(): View = _view
 
-    protected fun context(): Context = view.context
+    protected fun context(): Context = _view.context
 
 }

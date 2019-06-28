@@ -8,7 +8,7 @@ import io.freshdroid.mymonzo.core.network.ErrorEnvelope
 import io.freshdroid.mymonzo.core.ui.BaseFragment
 
 fun BaseFragment.showToastApiError(errorEnvelope: ErrorEnvelope) {
-    activity?.let { errorEnvelope.error?.let { Toast.makeText(activity, it, Toast.LENGTH_LONG).show() } }
+    activity?.let { errorEnvelope.message?.let { Toast.makeText(activity, it, Toast.LENGTH_LONG).show() } }
 }
 
 fun BaseFragment.showToastError(@StringRes messageResource: Int) {

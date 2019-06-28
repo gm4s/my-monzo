@@ -36,7 +36,7 @@ object Transformers {
     }
 
     /**
-     * Emits when an error is thrown in a materialized stream.
+     * Emits when an message is thrown in a materialized stream.
      */
     @JvmStatic
     fun <T> errors(): ErrorsTransformer<T> {

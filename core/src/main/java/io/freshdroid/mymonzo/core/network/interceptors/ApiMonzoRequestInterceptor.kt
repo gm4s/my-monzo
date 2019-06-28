@@ -11,8 +11,8 @@ import javax.inject.Inject
 internal const val ANDROID_DEVICE_TYPE_STRING = "android"
 
 internal class ApiMonzoRequestInterceptor @Inject constructor(
-    private val locale: Locale,
-    private val currentUser: CurrentUserType
+    private val _locale: Locale,
+    private val _currentUser: CurrentUserType
 ) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -24,9 +24,9 @@ internal class ApiMonzoRequestInterceptor @Inject constructor(
             .header("User-Agent", ANDROID_DEVICE_TYPE_STRING)
             .header("X-Agent-Version", BuildConfig.VERSION_CODE.toString())
             .header("Accept", "application/json")
-            .header("Accept-Language", locale.language)
+            .header("Accept-Language", _locale.language)
 
-        requestBuilder = addHeaderIfNotNull(requestBuilder, currentUser.getAccessToken(), "Authorization")
+        requestBuilder = addHeaderIfNotNull(requestBuilder, "Bearer ${_currentUser.getAccessToken()}", "Authorization")
 
         return requestBuilder.build()
     }

@@ -21,54 +21,54 @@ class BottomNavigationView @JvmOverloads constructor(
         fun onHelpClick()
     }
 
-    private val feedBottomNavigationItemView: BottomNavigationItemView by bind(R.id.feedBottomNavigationItemView)
-    private val summaryBottomNavigationItemView: BottomNavigationItemView by bind(R.id.summaryBottomNavigationItemView)
-    private val accountBottomNavigationItemView: BottomNavigationItemView by bind(R.id.accountBottomNavigationItemView)
-    private val helpBottomNavigationItemView: BottomNavigationItemView by bind(R.id.helpBottomNavigationItemView)
+    private val _feedBottomNavigationItemView: BottomNavigationItemView by bind(R.id.feedBottomNavigationItemView)
+    private val _summaryBottomNavigationItemView: BottomNavigationItemView by bind(R.id.summaryBottomNavigationItemView)
+    private val _accountBottomNavigationItemView: BottomNavigationItemView by bind(R.id.accountBottomNavigationItemView)
+    private val _helpBottomNavigationItemView: BottomNavigationItemView by bind(R.id.helpBottomNavigationItemView)
 
-    private var mListener: Listener? = null
-    private var mCurrentState: FragmentState = FragmentState.FEED
+    private var _listener: Listener? = null
+    private var _currentState: FragmentState = FragmentState.FEED
 
     init {
         LayoutInflater.from(context).inflate(R.layout.bottom_navigation_view, this, true)
 
-        feedBottomNavigationItemView.setOnClickListener { setStateActiveTab(FragmentState.FEED) }
-        summaryBottomNavigationItemView.setOnClickListener { setStateActiveTab(FragmentState.SUMMARY) }
-        accountBottomNavigationItemView.setOnClickListener { setStateActiveTab(FragmentState.ACCOUNT) }
-        helpBottomNavigationItemView.setOnClickListener { setStateActiveTab(FragmentState.HELP) }
+        _feedBottomNavigationItemView.setOnClickListener { setStateActiveTab(FragmentState.FEED) }
+        _summaryBottomNavigationItemView.setOnClickListener { setStateActiveTab(FragmentState.SUMMARY) }
+        _accountBottomNavigationItemView.setOnClickListener { setStateActiveTab(FragmentState.ACCOUNT) }
+        _helpBottomNavigationItemView.setOnClickListener { setStateActiveTab(FragmentState.HELP) }
     }
 
     fun setListener(listener: Listener) {
-        mListener = listener
+        _listener = listener
     }
 
-    fun getSelectedState(): FragmentState = mCurrentState
+    fun getSelectedState(): FragmentState = _currentState
 
     fun setStateActiveTab(state: FragmentState) {
         when (state) {
             FragmentState.FEED -> {
-                mCurrentState = FragmentState.FEED
+                _currentState = FragmentState.FEED
                 resetSate(state)
-                feedBottomNavigationItemView.setActive(true)
-                mListener?.onFeedClick()
+                _feedBottomNavigationItemView.setActive(true)
+                _listener?.onFeedClick()
             }
             FragmentState.SUMMARY -> {
-                mCurrentState = FragmentState.SUMMARY
+                _currentState = FragmentState.SUMMARY
                 resetSate(state)
-                summaryBottomNavigationItemView.setActive(true)
-                mListener?.onSummaryClick()
+                _summaryBottomNavigationItemView.setActive(true)
+                _listener?.onSummaryClick()
             }
             FragmentState.ACCOUNT -> {
-                mCurrentState = FragmentState.ACCOUNT
+                _currentState = FragmentState.ACCOUNT
                 resetSate(state)
-                accountBottomNavigationItemView.setActive(true)
-                mListener?.onAccountClick()
+                _accountBottomNavigationItemView.setActive(true)
+                _listener?.onAccountClick()
             }
             FragmentState.HELP -> {
-                mCurrentState = FragmentState.HELP
+                _currentState = FragmentState.HELP
                 resetSate(state)
-                helpBottomNavigationItemView.setActive(true)
-                mListener?.onHelpClick()
+                _helpBottomNavigationItemView.setActive(true)
+                _listener?.onHelpClick()
             }
         }
     }
@@ -76,24 +76,24 @@ class BottomNavigationView @JvmOverloads constructor(
     private fun resetSate(state: FragmentState) {
         when (state) {
             FragmentState.FEED -> {
-                summaryBottomNavigationItemView.setActive(false)
-                accountBottomNavigationItemView.setActive(false)
-                helpBottomNavigationItemView.setActive(false)
+                _summaryBottomNavigationItemView.setActive(false)
+                _accountBottomNavigationItemView.setActive(false)
+                _helpBottomNavigationItemView.setActive(false)
             }
             FragmentState.SUMMARY -> {
-                feedBottomNavigationItemView.setActive(false)
-                accountBottomNavigationItemView.setActive(false)
-                helpBottomNavigationItemView.setActive(false)
+                _feedBottomNavigationItemView.setActive(false)
+                _accountBottomNavigationItemView.setActive(false)
+                _helpBottomNavigationItemView.setActive(false)
             }
             FragmentState.ACCOUNT -> {
-                feedBottomNavigationItemView.setActive(false)
-                summaryBottomNavigationItemView.setActive(false)
-                helpBottomNavigationItemView.setActive(false)
+                _feedBottomNavigationItemView.setActive(false)
+                _summaryBottomNavigationItemView.setActive(false)
+                _helpBottomNavigationItemView.setActive(false)
             }
             FragmentState.HELP -> {
-                feedBottomNavigationItemView.setActive(false)
-                summaryBottomNavigationItemView.setActive(false)
-                accountBottomNavigationItemView.setActive(false)
+                _feedBottomNavigationItemView.setActive(false)
+                _summaryBottomNavigationItemView.setActive(false)
+                _accountBottomNavigationItemView.setActive(false)
             }
         }
     }

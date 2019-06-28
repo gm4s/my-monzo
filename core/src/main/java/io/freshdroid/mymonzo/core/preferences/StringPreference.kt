@@ -4,25 +4,25 @@ import android.content.SharedPreferences
 import javax.inject.Inject
 
 class StringPreference @Inject constructor(
-        private val sharedPreferences: SharedPreferences,
-        private val key: String,
-        private val defaultValue: String? = null
+    private val _sharedPreferences: SharedPreferences,
+    private val _key: String,
+    private val _defaultValue: String? = null
 ) : StringPreferenceType {
 
     override fun get(): String? {
-        return sharedPreferences.getString(key, defaultValue)
+        return _sharedPreferences.getString(_key, _defaultValue)
     }
 
     override fun isSet(): Boolean {
-        return sharedPreferences.contains(key)
+        return _sharedPreferences.contains(_key)
     }
 
     override fun set(value: String) {
-        sharedPreferences.edit().putString(key, value).apply()
+        _sharedPreferences.edit().putString(_key, value).apply()
     }
 
     override fun delete() {
-        sharedPreferences.edit().remove(key).apply()
+        _sharedPreferences.edit().remove(_key).apply()
     }
 
 }

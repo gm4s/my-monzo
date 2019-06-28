@@ -1,7 +1,7 @@
 package io.freshdroid.mymonzo.core.network
 
 enum class HttpVerb(
-        private val tag: String
+    private val _tag: String
 ) {
 
     GET("GET"),
@@ -12,7 +12,7 @@ enum class HttpVerb(
 
     companion object {
         @JvmStatic
-        fun protocolFromTag(tag: String): HttpVerb {
+        fun verbFromTag(tag: String): HttpVerb {
             return when (tag.toUpperCase()) {
                 "GET" -> GET
                 "POST" -> POST
