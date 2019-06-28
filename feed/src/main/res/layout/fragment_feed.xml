@@ -1,33 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-	<TextView android:layout_width="match_parent"
-	          android:layout_height="wrap_content"
-	          android:gravity="center"
-	          android:layout_marginTop="@dimen/margin_regular_x2"
-	          android:layout_marginStart="@dimen/margin_regular"
-	          android:layout_marginEnd="@dimen/margin_regular"
-	          android:text="£2058.99"
-	          android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-	          android:textStyle="bold"
-	          android:textColor="@color/colorPrimary"/>
+    <TextView
+            android:id="@+id/balanceNowTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/margin_regular_x2"
+            android:layout_marginStart="@dimen/margin_regular"
+            android:layout_marginEnd="@dimen/margin_regular"
+            tools:text="£2058.99"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"/>
 
-	<TextView android:layout_width="match_parent"
-	          android:layout_height="wrap_content"
-	          android:layout_marginTop="@dimen/margin_tiny"
-	          android:layout_marginEnd="@dimen/margin_regular"
-	          android:layout_marginStart="@dimen/margin_regular"
-	          android:gravity="center"
-	          android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-	          android:textColor="@color/colorPrimaryLight"
-	          android:text="Balance now"/>
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/margin_tiny"
+              android:layout_marginEnd="@dimen/margin_regular"
+              android:layout_marginStart="@dimen/margin_regular"
+              android:gravity="center"
+              android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+              android:textColor="@color/colorPrimaryLight"
+              android:text="Balance now"/>
 
-	<androidx.recyclerview.widget.RecyclerView
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:layout_marginTop="@dimen/margin_regular_x2"/>
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_regular_x2"/>
 
 </LinearLayout>

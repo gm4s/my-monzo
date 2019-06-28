@@ -26,9 +26,13 @@ android {
     buildTypes {
         debug {
             buildConfigField 'String', 'BASE_URL', secretsProperties['devBaseUrl']
+            buildConfigField 'String', 'ACCOUNT_ID', secretsProperties['accountID']
+            buildConfigField 'String', 'USER_TOKEN', secretsProperties['userToken']
         }
         release {
             buildConfigField 'String', 'BASE_URL', secretsProperties['prodBaseUrl']
+            buildConfigField 'String', 'ACCOUNT_ID', secretsProperties['accountID']
+            buildConfigField 'String', 'USER_TOKEN', secretsProperties['userToken']
 
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
