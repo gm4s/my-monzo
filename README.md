@@ -57,11 +57,11 @@ class NewFeatureViewModel(
 ): ActivityViewModel() {
 
     class Factory(
-            private val environment: NewFeatureEnvironment,
-            private val scopeProvider: AndroidLifecycleScopeProvider
+            private val _environment: NewFeatureEnvironment,
+            private val _scopeProvider: AndroidLifecycleScopeProvider
     ) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return NewFeatureViewModel(environment, scopeProvider) as T
+            return NewFeatureViewModel(_environment, _scopeProvider) as T
         }
     }
 
@@ -115,12 +115,14 @@ $ git commit -am "[... your message ...]"
 Please follow the template [PULL_REQUEST_TEMPLATE](https://github.com/gm4s/my-monzo/blob/master/.github/PULL_REQUEST_TEMPLATE.md) when you create a new pull request.
 
 ## Android Version Support :iphone:
+
 Android fragmentation analytics --> [Platform Versions](http://developer.android.com/about/dashboards/index.html#Platform)
 
 * Min API 21 --> Lolipop : 5.0.x
 * Max API 28 --> Oreo : 8.1.x
 
 ## Android Code Style Convention :watermelon:
+
 * To see the Android docs --> [Click here](https://source.android.com/source/code-style)
 * To see the Kotlin docs --> [Click here](https://kotlinlang.org/docs/reference/coding-conventions.html)
 
@@ -131,6 +133,7 @@ Android fragmentation analytics --> [Platform Versions](http://developer.android
   - https://medium.com/androiddevelopers/a-patchwork-plaid-monolith-to-modularized-app-60235d9f212e
   - https://medium.com/mindorks/dynamic-feature-modules-the-future-4bee124c0f1
   - https://www.youtube.com/watch?v=PZBg5DIzNww
+  - https://github.com/android/plaid
 * Reactive Functional MVVM:  
   - https://github.com/kickstarter/android-oss
 * Server-Driven Rendering:
@@ -138,4 +141,5 @@ Android fragmentation analytics --> [Platform Versions](http://developer.android
   - https://youtu.be/-A8EJ8_eVOY?t=8m25s
 
 ## Contributors :cookie:
+
 [Guillaume Mas](https://github.com/NodensN)
