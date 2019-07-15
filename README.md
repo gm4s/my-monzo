@@ -1,6 +1,6 @@
 # MyMonzo for Android™
 
-[![Kotlin](https://img.shields.io/badge/kotlin-1.3.31-519EF8.svg)](https://kotlinlang.org/) [![Java](https://img.shields.io/badge/java-1.8-5C819D.svg)](https://developer.android.com/guide/index.html)
+[![Kotlin](https://img.shields.io/badge/kotlin-1.3.41-519EF8.svg)](https://kotlinlang.org/) [![Java](https://img.shields.io/badge/java-1.8-5C819D.svg)](https://developer.android.com/guide/index.html)
 [![Min SDK](https://img.shields.io/badge/min%20SDK-21-lightgrey.svg)](http://developer.android.com/about/dashboards/index.html#Platform)
 
 ## Modular Architecture :wrench:
