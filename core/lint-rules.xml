@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
 
-    <issue id="ObsoleteSdkInt" severity="ignore" /> <!-- Prevent lint warning on build min21 -->
-    <issue id="GradleDependency" severity="ignore" />
-    <issue id="InvalidPackage" severity="ignore"/> <!-- caused by sdk Zendesk -->
+    <issue id="ObsoleteSdkInt" severity="ignore"/> <!-- Prevent lint warning on build min21 -->
+    <issue id="GradleDependency" severity="ignore"/>
 
     <issue id="UnusedResources">
-        <ignore path="build" />
+        <ignore path="build"/>
     </issue>
 
-    <issue id="ParcelCreator"
-        severity="ignore" /> <!-- remove when kotlin @Parcelize no longer on experimental mode -->
+    <issue id="ParcelCreator" severity="ignore"/> <!-- remove when kotlin @Parcelize no longer on experimental mode -->
     <issue id="UnusedResources">
-        <ignore
-            path="src/main/res/" /> <!-- remove when gradle will suport Kotlin linter https://youtrack.jetbrains.com/issue/KT-12499#comment=27-2334737 -->
+        <ignore path="src/main/res/"/> <!-- remove when gradle will suport Kotlin linter https://youtrack.jetbrains.com/issue/KT-12499#comment=27-2334737 -->
     </issue>
 
 </lint>
