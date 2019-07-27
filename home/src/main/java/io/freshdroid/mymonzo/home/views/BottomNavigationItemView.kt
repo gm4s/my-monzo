@@ -1,6 +1,5 @@
 package io.freshdroid.mymonzo.home.views
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -24,12 +23,12 @@ class BottomNavigationItemView @JvmOverloads constructor(
         LayoutInflater.from(context).inflate(R.layout.bottom_navigation_item_view, this, true)
 
         attrs?.let {
-            @SuppressLint("Recycle")
             val a = context.obtainStyledAttributes(attrs, R.styleable.BottomNavigationItemView, 0, 0)
             val drawable = a.getDrawable(R.styleable.BottomNavigationItemView_icon)
             if (drawable != null) {
                 _iconImageView.setImageDrawable(drawable)
             }
+            a.recycle()
         }
     }
 
