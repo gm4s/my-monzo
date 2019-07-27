@@ -9,13 +9,4 @@ object ApplicationMap {
         const val HELPS = "mymonzo://home/helps"
     }
 
-    object Transaction {
-        const val DETAILS = "mymonzo://transaction/details"
-    }
-
-    object Lock {
-        const val FINGER_PRINT = "mymonzo://lock/finger-print"
-        const val PIN = "mymonzo://lock/pin"
-    }
-
 }

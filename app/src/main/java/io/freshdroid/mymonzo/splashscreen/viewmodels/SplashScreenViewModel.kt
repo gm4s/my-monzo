@@ -11,7 +11,6 @@ import io.freshdroid.mymonzo.core.viewmodel.ActivityViewModel
 import io.freshdroid.mymonzo.navigation.ApplicationMap
 import io.freshdroid.mymonzo.splashscreen.SplashScreenEnvironment
 import io.freshdroid.mymonzo.splashscreen.di.SplashScreenComponentManager
-import io.freshdroid.mymonzo.splashscreen.viewmodels.errors.SplashScreenViewModelErrors
 import io.freshdroid.mymonzo.splashscreen.viewmodels.inputs.SplashScreenViewModelInputs
 import io.freshdroid.mymonzo.splashscreen.viewmodels.outputs.SplashScreenViewModelOutputs
 import io.reactivex.Observable
@@ -21,7 +20,7 @@ import java.util.concurrent.TimeUnit
 class SplashScreenViewModel(
     environment: SplashScreenEnvironment,
     scopeProvider: AndroidLifecycleScopeProvider
-) : ActivityViewModel(), SplashScreenViewModelInputs, SplashScreenViewModelOutputs, SplashScreenViewModelErrors {
+) : ActivityViewModel(), SplashScreenViewModelInputs, SplashScreenViewModelOutputs {
 
     private val _fakeLoading = PublishSubject.create<Irrelevant>()
     private val _launchNextActivity = PublishSubject.create<Uri>()
@@ -31,7 +30,6 @@ class SplashScreenViewModel(
 
     val inputs: SplashScreenViewModelInputs = this
     val outputs: SplashScreenViewModelOutputs = this
-    val errors: SplashScreenViewModelErrors = this
 
     init {
         _fakeLoading

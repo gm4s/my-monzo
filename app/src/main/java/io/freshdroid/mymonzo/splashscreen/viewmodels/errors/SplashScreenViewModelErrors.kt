@@ -1,3 +1,0 @@
-package io.freshdroid.mymonzo.splashscreen.viewmodels.errors
-
-interface SplashScreenViewModelErrors
