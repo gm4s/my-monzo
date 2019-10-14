@@ -1,12 +1,12 @@
 package io.freshdroid.mymonzo
 
+import android.app.Application
 import android.app.NotificationManager
 import android.content.Context
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ProcessLifecycleOwner
-import androidx.multidex.MultiDexApplication
 import io.freshdroid.mymonzo.core.di.CoreComponent
 import io.freshdroid.mymonzo.core.di.CoreModule
 import io.freshdroid.mymonzo.core.di.DaggerCoreComponent
@@ -14,7 +14,7 @@ import io.freshdroid.mymonzo.core.ui.BaseActivity
 import io.freshdroid.mymonzo.core.ui.BaseFragment
 import timber.log.Timber
 
-open class MyMonzoApplication : MultiDexApplication(), LifecycleObserver {
+open class MyMonzoApplication : Application(), LifecycleObserver {
 
     private val _coreComponent: CoreComponent by lazy {
         DaggerCoreComponent.builder()
