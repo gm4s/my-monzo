@@ -1,33 +1,37 @@
 package io.freshdroid.mymonzo.feed.viewmodels
 
 import io.freshdroid.mymonzo.core.network.ErrorEnvelope
+import io.freshdroid.mymonzo.core.user.CurrentUserType
 import io.freshdroid.mymonzo.feed.FeedEnvironment
 import io.freshdroid.mymonzo.feed.MyMonzoRobolectricTestCase
-import io.freshdroid.mymonzo.feed.di.DaggerFeedComponent
-import io.freshdroid.mymonzo.feed.di.FeedComponent
 import io.freshdroid.mymonzo.feed.exceptions.ApiExceptionFactory
 import io.freshdroid.mymonzo.feed.factories.BalanceFactory
 import io.freshdroid.mymonzo.feed.mocks.MockApiFeed
 import io.freshdroid.mymonzo.feed.models.Balance
+import io.freshdroid.mymonzo.feed.network.ApiFeedType
 import io.reactivex.Observable
+import io.reactivex.Scheduler
 import io.reactivex.subscribers.TestSubscriber
 import org.junit.Before
 import org.junit.Test
+import org.mockito.Mockito.mock
 
 internal class FeedFragmentViewModelTest : MyMonzoRobolectricTestCase() {
 
-    private lateinit var _component: FeedComponent
+    private lateinit var environment: FeedEnvironment
 
     @Before
     fun initComponent() {
-        _component = DaggerFeedComponent.builder().coreComponent(coreComponent()).build()
+        environment = FeedEnvironment(
+            mock(CurrentUserType::class.java),
+            mock(ApiFeedType::class.java),
+            mock(Scheduler::class.java)
+        )
     }
-
-    private fun environment(): FeedEnvironment = _component.environment()
 
     @Test
     fun testCurrentBalance() {
-        val environment = environment().copy(
+        val environment = environment.copy(
             apiFeed = object : MockApiFeed() {
                 override fun fetchBalance(): Observable<Balance> {
                     return Observable.just(BalanceFactory.creator())
@@ -44,7 +48,7 @@ internal class FeedFragmentViewModelTest : MyMonzoRobolectricTestCase() {
 
     @Test
     fun testFetchBalanceApiError() {
-        val environment = environment().copy(
+        val environment = environment.copy(
             apiFeed = object : MockApiFeed() {
                 override fun fetchBalance(): Observable<Balance> {
                     return Observable.error(ApiExceptionFactory.badRequestException())

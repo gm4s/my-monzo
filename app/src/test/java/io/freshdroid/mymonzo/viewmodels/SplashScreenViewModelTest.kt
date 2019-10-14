@@ -2,35 +2,37 @@ package io.freshdroid.mymonzo.viewmodels
 
 import android.net.Uri
 import io.freshdroid.mymonzo.MyMonzoRobolectricTestCase
+import io.freshdroid.mymonzo.core.user.CurrentUserType
 import io.freshdroid.mymonzo.navigation.ApplicationMap
 import io.freshdroid.mymonzo.splashscreen.SplashScreenEnvironment
-import io.freshdroid.mymonzo.splashscreen.di.DaggerSplashScreenComponent
-import io.freshdroid.mymonzo.splashscreen.di.SplashScreenComponent
 import io.freshdroid.mymonzo.splashscreen.viewmodels.SplashScreenViewModel
+import io.reactivex.Scheduler
 import io.reactivex.schedulers.TestScheduler
 import io.reactivex.subscribers.TestSubscriber
 import org.junit.Before
 import org.junit.Test
+import org.mockito.Mockito.mock
 import java.util.concurrent.TimeUnit
 
 internal class SplashScreenViewModelTest : MyMonzoRobolectricTestCase() {
 
-    private lateinit var component: SplashScreenComponent
+    private lateinit var environment: SplashScreenEnvironment
 
     @Before
     fun initComponent() {
-        component = DaggerSplashScreenComponent.builder().coreComponent(coreComponent()).build()
+        environment = SplashScreenEnvironment(
+            mock(CurrentUserType::class.java),
+            mock(Scheduler::class.java)
+        )
     }
-
-    private fun environment(): SplashScreenEnvironment = component.environment()
 
     @Test
     fun testLaunchNextActivity() {
         val testScheduler = TestScheduler()
-        val environment = environment().copy(
+        val environment = environment.copy(
             scheduler = testScheduler
         )
-        val vm = SplashScreenViewModel(environment, scopeProvider())
+        val vm = SplashScreenViewModel(environment)
         val launchNextActivity = TestSubscriber<Uri>()
         vm.outputs.launchNextActivity().subscribe(launchNextActivity::onNext)
 
