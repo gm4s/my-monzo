@@ -34,7 +34,7 @@ internal class FeedFragmentViewModelTest : MyMonzoRobolectricTestCase() {
                 }
             }
         )
-        val vm = FeedFragmentViewModel(environment, scopeProvider())
+        val vm = FeedFragmentViewModel(environment)
         val currentBalance = TestSubscriber<Balance>()
         vm.outputs.currentBalance().subscribe(currentBalance::onNext)
 
@@ -51,7 +51,7 @@ internal class FeedFragmentViewModelTest : MyMonzoRobolectricTestCase() {
                 }
             }
         )
-        val vm = FeedFragmentViewModel(environment, scopeProvider())
+        val vm = FeedFragmentViewModel(environment)
         val fetchBalanceApiError = TestSubscriber<ErrorEnvelope>()
         vm.errors.fetchBalanceApiError().subscribe(fetchBalanceApiError::onNext)
 

@@ -1,12 +1,11 @@
 package io.freshdroid.mymonzo.core.viewmodel
 
 import android.content.Intent
-import androidx.lifecycle.ViewModel
 import io.freshdroid.mymonzo.core.ui.ActivityResult
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 
-open class ActivityViewModel : ViewModel() {
+open class ActivityViewModel : AutoDisposeViewModel() {
 
     private val _activityResult = PublishSubject.create<ActivityResult>()
     private val _intent = PublishSubject.create<Intent>()

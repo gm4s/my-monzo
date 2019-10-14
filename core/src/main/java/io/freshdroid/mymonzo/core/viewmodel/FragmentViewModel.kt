@@ -1,12 +1,11 @@
 package io.freshdroid.mymonzo.core.viewmodel
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModel
 import io.freshdroid.mymonzo.core.ui.ActivityResult
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 
-open class FragmentViewModel : ViewModel() {
+open class FragmentViewModel : AutoDisposeViewModel() {
 
     private val _activityResult = PublishSubject.create<ActivityResult>()
     private val _arguments = PublishSubject.create<Bundle>()

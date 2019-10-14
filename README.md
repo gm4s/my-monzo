@@ -52,16 +52,14 @@ For each new `ViewModel`'s please follow this implementation:
 
 ```kotlin
 class NewFeatureViewModel(
-        environment: NewFeatureEnvironment,
-        scopeProvider: AndroidLifecycleScopeProvider
+        environment: NewFeatureEnvironment
 ): ActivityViewModel() {
 
     class Factory(
-            private val _environment: NewFeatureEnvironment,
-            private val _scopeProvider: AndroidLifecycleScopeProvider
+            private val _environment: NewFeatureEnvironment
     ) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return NewFeatureViewModel(_environment, _scopeProvider) as T
+            return NewFeatureViewModel(_environment) as T
         }
     }
 

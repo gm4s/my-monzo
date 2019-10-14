@@ -2,7 +2,6 @@ package io.freshdroid.mymonzo.home.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
 import com.uber.autodispose.autoDisposable
 import io.freshdroid.mymonzo.core.rx.Irrelevant
 import io.freshdroid.mymonzo.core.ui.IntentExtra
@@ -14,9 +13,7 @@ import io.freshdroid.mymonzo.navigation.Activities
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 
-class HomeViewModel(
-    scopeProvider: AndroidLifecycleScopeProvider
-) : ActivityViewModel(), HomeViewModelInputs, HomeViewModelOutputs {
+class HomeViewModel : ActivityViewModel(), HomeViewModelInputs, HomeViewModelOutputs {
 
     private val _feedClicked = PublishSubject.create<Irrelevant>()
     private val _summaryClicked = PublishSubject.create<Irrelevant>()
@@ -32,23 +29,23 @@ class HomeViewModel(
         IntentExtra.getStringFromKey(intent(), Activities.Home.KEY_EXTRA_HOME_ACTIVE_TAB, true)
             .map { FragmentState.stateFromTag(it) }
             .doOnNext(_initBottomNavigationBar::onNext)
-            .autoDisposable(scopeProvider)
+            .autoDisposable(this)
             .subscribe(_displaySelectedFragment::onNext)
 
         _feedClicked
-            .autoDisposable(scopeProvider)
+            .autoDisposable(this)
             .subscribe { _displaySelectedFragment.onNext(FragmentState.FEED) }
 
         _summaryClicked
-            .autoDisposable(scopeProvider)
+            .autoDisposable(this)
             .subscribe { _displaySelectedFragment.onNext(FragmentState.SUMMARY) }
 
         _accountClicked
-            .autoDisposable(scopeProvider)
+            .autoDisposable(this)
             .subscribe { _displaySelectedFragment.onNext(FragmentState.ACCOUNT) }
 
         _helpClicked
-            .autoDisposable(scopeProvider)
+            .autoDisposable(this)
             .subscribe { _displaySelectedFragment.onNext(FragmentState.HELP) }
     }
 
@@ -77,11 +74,9 @@ class HomeViewModel(
     override fun displaySelectedFragment(): Observable<FragmentState> = _displaySelectedFragment
 
     @Suppress("UNCHECKED_CAST")
-    class Factory(
-        private val _scopeProvider: AndroidLifecycleScopeProvider
-    ) : ViewModelProvider.Factory {
+    class Factory : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return HomeViewModel(_scopeProvider) as T
+            return HomeViewModel() as T
         }
     }
 

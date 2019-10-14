@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_home.*
 class HomeActivity : BaseActivity() {
 
     private val _viewModelFactory by lazy {
-        HomeViewModel.Factory(scopeProvider)
+        HomeViewModel.Factory()
     }
     private val _viewModel by lazy {
         ViewModelProviders.of(this, _viewModelFactory).get(HomeViewModel::class.java)

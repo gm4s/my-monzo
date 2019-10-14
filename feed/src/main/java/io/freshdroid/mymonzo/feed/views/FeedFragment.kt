@@ -24,7 +24,7 @@ class FeedFragment : BaseFragment() {
         FeedComponentManager.feedComponent(coreComponent())
     }
     private val _viewModelFactory by lazy {
-        FeedFragmentViewModel.Factory(_component.environment(), scopeProvider)
+        FeedFragmentViewModel.Factory(_component.environment())
     }
     private val _viewModel by lazy {
         ViewModelProviders.of(this, _viewModelFactory).get(FeedFragmentViewModel::class.java)

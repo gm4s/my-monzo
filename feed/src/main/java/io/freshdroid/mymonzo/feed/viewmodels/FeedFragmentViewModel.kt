@@ -2,7 +2,6 @@ package io.freshdroid.mymonzo.feed.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
 import com.uber.autodispose.autoDisposable
 import io.freshdroid.mymonzo.core.network.ErrorEnvelope
 import io.freshdroid.mymonzo.core.rx.Irrelevant
@@ -19,9 +18,9 @@ import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 
 class FeedFragmentViewModel(
-    environment: FeedEnvironment,
-    scopeProvider: AndroidLifecycleScopeProvider
-) : FragmentViewModel(), FeedFragmentViewModelInputs, FeedFragmentViewModelOutputs, FeedFragmentViewModelErrors {
+    environment: FeedEnvironment
+) : FragmentViewModel(), FeedFragmentViewModelInputs, FeedFragmentViewModelOutputs,
+    FeedFragmentViewModelErrors {
 
     private val _fetchCurrentBalance = PublishSubject.create<Irrelevant>()
     private val _currentBalance = PublishSubject.create<Balance>()
@@ -37,7 +36,7 @@ class FeedFragmentViewModel(
     init {
         _fetchCurrentBalance
             .switchMap { this.fetchBalance() }
-            .autoDisposable(scopeProvider)
+            .autoDisposable(this)
             .subscribe(_currentBalance::onNext)
     }
 
@@ -68,11 +67,10 @@ class FeedFragmentViewModel(
 
     @Suppress("UNCHECKED_CAST")
     class Factory(
-        private val _environment: FeedEnvironment,
-        private val _scopeProvider: AndroidLifecycleScopeProvider
+        private val _environment: FeedEnvironment
     ) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return FeedFragmentViewModel(_environment, _scopeProvider) as T
+            return FeedFragmentViewModel(_environment) as T
         }
     }
 

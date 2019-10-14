@@ -3,7 +3,6 @@ package io.freshdroid.mymonzo.splashscreen.viewmodels
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
 import com.uber.autodispose.autoDisposable
 import io.freshdroid.mymonzo.core.BuildConfig
 import io.freshdroid.mymonzo.core.rx.Irrelevant
@@ -18,8 +17,7 @@ import io.reactivex.subjects.PublishSubject
 import java.util.concurrent.TimeUnit
 
 class SplashScreenViewModel(
-    environment: SplashScreenEnvironment,
-    scopeProvider: AndroidLifecycleScopeProvider
+    environment: SplashScreenEnvironment
 ) : ActivityViewModel(), SplashScreenViewModelInputs, SplashScreenViewModelOutputs {
 
     private val _fakeLoading = PublishSubject.create<Irrelevant>()
@@ -35,7 +33,7 @@ class SplashScreenViewModel(
         _fakeLoading
             .doOnNext { _currentUser.setAccessToken(BuildConfig.USER_TOKEN) }
             .delay(1000, TimeUnit.MILLISECONDS, _scheduler)
-            .autoDisposable(scopeProvider)
+            .autoDisposable(this)
             .subscribe { _launchNextActivity.onNext(Uri.parse(ApplicationMap.Home.FEED)) }
     }
 
@@ -56,12 +54,10 @@ class SplashScreenViewModel(
 
     @Suppress("UNCHECKED_CAST")
     class Factory(
-        private val _environment: SplashScreenEnvironment,
-        private val _scopeProvider: AndroidLifecycleScopeProvider
+        private val _environment: SplashScreenEnvironment
     ) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return SplashScreenViewModel(_environment, _scopeProvider) as T
+            return SplashScreenViewModel(_environment) as T
         }
     }
-
 }

@@ -11,7 +11,7 @@ internal class HomeViewModelTest : MyMonzoRobolectricTestCase() {
 
     @Test
     fun testDisplaySelectedFragment_feed() {
-        val vm = HomeViewModel(scopeProvider())
+        val vm = HomeViewModel()
         val displaySelectedFragment = TestSubscriber<FragmentState>()
         vm.outputs.displaySelectedFragment().subscribe(displaySelectedFragment::onNext)
 
@@ -21,7 +21,7 @@ internal class HomeViewModelTest : MyMonzoRobolectricTestCase() {
 
     @Test
     fun testDisplaySelectedFragment_summary() {
-        val vm = HomeViewModel(scopeProvider())
+        val vm = HomeViewModel()
         val displaySelectedFragment = TestSubscriber<FragmentState>()
         vm.outputs.displaySelectedFragment().subscribe(displaySelectedFragment::onNext)
 
@@ -31,7 +31,7 @@ internal class HomeViewModelTest : MyMonzoRobolectricTestCase() {
 
     @Test
     fun testDisplaySelectedFragment_account() {
-        val vm = HomeViewModel(scopeProvider())
+        val vm = HomeViewModel()
         val displaySelectedFragment = TestSubscriber<FragmentState>()
         vm.outputs.displaySelectedFragment().subscribe(displaySelectedFragment::onNext)
 
@@ -41,7 +41,7 @@ internal class HomeViewModelTest : MyMonzoRobolectricTestCase() {
 
     @Test
     fun testDisplaySelectedFragment_help() {
-        val vm = HomeViewModel(scopeProvider())
+        val vm = HomeViewModel()
         val displaySelectedFragment = TestSubscriber<FragmentState>()
         vm.outputs.displaySelectedFragment().subscribe(displaySelectedFragment::onNext)
 
@@ -51,7 +51,7 @@ internal class HomeViewModelTest : MyMonzoRobolectricTestCase() {
 
     @Test
     fun testInitBottomNavigationBar_feed() {
-        val vm = HomeViewModel(scopeProvider())
+        val vm = HomeViewModel()
         val initBottomNavigationBar = TestSubscriber<FragmentState>()
         vm.outputs.initBottomNavigationBar().subscribe(initBottomNavigationBar::onNext)
 
@@ -64,7 +64,7 @@ internal class HomeViewModelTest : MyMonzoRobolectricTestCase() {
 
     @Test
     fun testInitBottomNavigationBar_summary() {
-        val vm = HomeViewModel(scopeProvider())
+        val vm = HomeViewModel()
         val initBottomNavigationBar = TestSubscriber<FragmentState>()
         vm.outputs.initBottomNavigationBar().subscribe(initBottomNavigationBar::onNext)
 
@@ -77,7 +77,7 @@ internal class HomeViewModelTest : MyMonzoRobolectricTestCase() {
 
     @Test
     fun testInitBottomNavigationBar_account() {
-        val vm = HomeViewModel(scopeProvider())
+        val vm = HomeViewModel()
         val initBottomNavigationBar = TestSubscriber<FragmentState>()
         vm.outputs.initBottomNavigationBar().subscribe(initBottomNavigationBar::onNext)
 
@@ -90,7 +90,7 @@ internal class HomeViewModelTest : MyMonzoRobolectricTestCase() {
 
     @Test
     fun testInitBottomNavigationBar_help() {
-        val vm = HomeViewModel(scopeProvider())
+        val vm = HomeViewModel()
         val initBottomNavigationBar = TestSubscriber<FragmentState>()
         vm.outputs.initBottomNavigationBar().subscribe(initBottomNavigationBar::onNext)
 

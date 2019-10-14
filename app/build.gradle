@@ -34,7 +34,7 @@ android {
 
     dynamicFeatures = [
             ":feed",
-            ":home",
+            ":home"
     ]
 
 }

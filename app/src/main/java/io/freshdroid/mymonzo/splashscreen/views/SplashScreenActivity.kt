@@ -19,7 +19,7 @@ class SplashScreenActivity : BaseActivity() {
         SplashScreenComponentManager.splashScreenComponent(coreComponent())
     }
     private val _viewModelFactory by lazy {
-        SplashScreenViewModel.Factory(_component.environment(), scopeProvider)
+        SplashScreenViewModel.Factory(_component.environment())
     }
     private val _viewModel by lazy {
         ViewModelProviders.of(this, _viewModelFactory).get(SplashScreenViewModel::class.java)
@@ -38,5 +38,4 @@ class SplashScreenActivity : BaseActivity() {
         _viewModel.intent(intent)
         _viewModel.inputs.fakeLoading()
     }
-
 }
